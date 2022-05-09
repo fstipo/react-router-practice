@@ -1,6 +1,8 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, Outlet, Route, Routes, useLocation } from 'react-router-dom';
 import './../../App.css';
+import Dashboard from './Dashboard';
+import Page from './Page';
 
 const NavLink = ({
   to,
@@ -10,7 +12,6 @@ const NavLink = ({
   ...rest
 }) => {
   const location = useLocation();
-  console.log({ location });
   const isActive = location.pathname === to;
   const allClassNames =
     className + (isActive ? ` ${activeClassName}` : ` ${inactiveClassName} `);
@@ -66,8 +67,25 @@ const Navigation = () => {
         </ul>
       </header>
       <hr />
-      <h1 className="mt-2">Dashboard</h1>
-      <section className="m-5 section__border"></section>
+      <Routes>
+        <Route path="/" element={<Dashboard title={'Dashboard'}></Dashboard>}>
+          <Route path="/" element={<p className="fw-bold p-2">overview</p>} />
+          <Route
+            path="/new-users"
+            element={<p className="fw-bold p-2">new users</p>}
+          ></Route>
+          <Route path="/sales" element={<p className="fw-bold p-2">sales</p>} />
+        </Route>
+        <Route
+          path="/projects"
+          element={<Page title={'Projects'}></Page>}
+        ></Route>
+        <Route path="/team" element={<Page title={'Team'}></Page>}></Route>
+        <Route
+          path="/calendar"
+          element={<Page title={'Calendar'}></Page>}
+        ></Route>
+      </Routes>
     </div>
   );
 };

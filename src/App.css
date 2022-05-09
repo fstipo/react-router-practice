@@ -11,3 +11,9 @@
   border-radius: 10px;
   height: 60vh;
 }
+
+.active-link {
+  background-color: burlywood;
+  font-weight: bold;
+  border-bottom: 5px solid #e23545;
+}
