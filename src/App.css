@@ -1,4 +1,4 @@
-.active {
+.actives {
   border-bottom: 5px solid #e23545;
 }
 
@@ -15,5 +15,5 @@
 .active-link {
   background-color: burlywood;
   font-weight: bold;
-  border-bottom: 5px solid #e23545;
+  border-bottom: 5px solid #35e277;
 }

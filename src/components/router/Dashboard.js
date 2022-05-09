@@ -1,5 +1,6 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { NavLink } from './Navigation';
 import './../../App.css';
 
 const Dashboard = ({ title }) => {
@@ -9,25 +10,26 @@ const Dashboard = ({ title }) => {
         <h1>{title}</h1>
         <nav className="d-flex gap-2">
           <NavLink
-            className="inactive text-decoration-none text-dark"
-            activeClassName="active"
+            className="text-decoration-none text-dark"
+            activeClassName="active-link"
+            exact={true}
             to="/"
           >
             Overview
           </NavLink>
           <NavLink
             to="/new-users"
-            activeClassName="active"
+            activeClassName="active-link"
             inactiveClassName="inactive"
-            className="inactive text-decoration-none text-dark"
+            className="text-decoration-none text-dark"
           >
             New Users
           </NavLink>
           <NavLink
             to="/sales"
-            activeClassName="active"
+            activeClassName="active-link"
             inactiveClassName="inactive"
-            className="inactive text-decoration-none text-dark"
+            className="text-decoration-none text-dark"
           >
             Sales
           </NavLink>
