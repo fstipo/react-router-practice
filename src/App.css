@@ -1,12 +1,13 @@
 .active {
-  border-bottom: 2px solid #e23545;
+  border-bottom: 5px solid #e23545;
 }
 
-.inactive {
-  border-bottom: 2px solid gray;
+.inactive:hover {
+  border-bottom: 5px solid gray;
 }
 
 .section__border {
-  border: 1px dashed gray;
+  border: 3px dashed rgb(204, 204, 204);
+  border-radius: 10px;
   height: 60vh;
 }

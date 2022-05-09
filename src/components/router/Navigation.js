@@ -1,42 +1,74 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './../../App.css';
+
+const NavLink = ({
+  to,
+  className,
+  activeClassName,
+  inactiveClassName,
+  ...rest
+}) => {
+  const location = useLocation();
+  console.log({ location });
+  const isActive = location.pathname === to;
+  const allClassNames =
+    className + (isActive ? ` ${activeClassName}` : ` ${inactiveClassName} `);
+  return <Link className={allClassNames} to={to} {...rest} />;
+};
 
 const Navigation = () => {
   return (
-    <>
+    <div className="container">
       <header className="d-flex justify-content-start align-items-end ms-2 mt-2">
-        <h2 className="fw-3 fs-2">ReactRouter</h2>
+        <h2 className="fw-3 fs-2 text-danger">ReactRouter</h2>
         <ul className="d-flex gap-3">
           <li className="btn btn-link text-decoration-none ">
-            <a className="text-decoration-none text-dark  fs-3 active" href="/">
+            <NavLink
+              className="nav__link text-decoration-none text-dark  fs-3"
+              activeClassName="active"
+              inactiveClassName="inactive"
+              to="/"
+            >
               Dashboard
-            </a>
+            </NavLink>
           </li>
-          <li className="btn btn-link text-decoration-none   ">
-            <a
-              className="text-dark  text-decoration-none fs-3 inactive"
-              href="/"
+          <li className=" btn btn-link text-decoration-none   ">
+            <NavLink
+              activeClassName="active"
+              inactiveClassName="inactive"
+              className=" nav__link text-dark  text-decoration-none fs-3"
+              to="/projects"
             >
               Projects
-            </a>
+            </NavLink>
           </li>
-          <li className="btn btn-link text-decoration-none">
-            <a className="text-dark  text-decoration-none  fs-3" href="/">
+          <li className=" btn btn-link text-decoration-none">
+            <NavLink
+              activeClassName="active"
+              inactiveClassName="inactive"
+              className="nav__link text-dark  text-decoration-none  fs-3"
+              to="/team"
+            >
               Team
-            </a>
+            </NavLink>
           </li>
           <li className="btn btn-link text-decoration-none">
-            <a className="text-dark text-decoration-none fs-3" href="/">
+            <NavLink
+              activeClassName="active"
+              inactiveClassName="inactive"
+              className="nav__link text-dark text-decoration-none fs-3"
+              to="/calendar"
+            >
               Calendar
-            </a>
+            </NavLink>
           </li>
         </ul>
       </header>
       <hr />
-      <section className="m-5 section__border">
-        <h1 className="m-3">Dashboard</h1>
-      </section>
-    </>
+      <h1 className="mt-2">Dashboard</h1>
+      <section className="m-5 section__border"></section>
+    </div>
   );
 };
 
